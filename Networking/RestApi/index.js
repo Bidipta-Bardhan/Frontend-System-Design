@@ -23,13 +23,13 @@ const todos=[{
 app.post('/todos',(req,res)=>{
     const newTodo=req.body;
     todos.push(newTodo);
-    res.json({
+    res.status(201).json({
         message: todos
     })
 })
 // READ
 app.get('/todos',(req,res)=>{
-    res.json(todos);
+    res.status(200).json(todos);
 })
 // UPDATE
 app.put('/todos/:id',(req,res)=>{
@@ -41,9 +41,9 @@ app.put('/todos/:id',(req,res)=>{
             id: req.params.id,
             ...newTodoData
         }
-        res.json(todos);
+        res.status(200).json(todos);
     }else{
-        res.json({
+        res.status(400).json({
             message: 'Id not found'
         })
     }
@@ -54,9 +54,9 @@ app.delete('/todos/:id',(req,res)=>{
     if(todoId!==-1)
     {
         todos.splice(todoId,1);
-         res.json(todos);
+         res.status(200).json(todos);
     }else{
-        res.json({
+        res.status(400).json({
             message: 'Id not found'
         })
     }
