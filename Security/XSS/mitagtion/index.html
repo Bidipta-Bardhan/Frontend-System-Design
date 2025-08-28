@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XSS Mitigation - Content Security Policy Headers Example</title>
+  </head>
+  <body>
+    <h2>XSS Mitigation - Content Security Policy Headers Example</h2>
+    <img
+      src="https://media.licdn.com/dms/image/v2/D5603AQHMN3-Mvdtc4w/profile-displayphoto-crop_800_800/B56Zex9qDrHQAI-/0/1751037420232?e=1758758400&v=beta&t=p_KgHTI0bb5dLk1kkCnMw8okcN3DUY3m9tpzI94nDkQ"
+    />
+  </body>
+  <script src="http://unsecure.com/abc.js"></script>
+  <script nonce="randomKey">
+    console.log("My trusted Code");
+  </script>
+  <script>
+    console.log("My untrusted Code");
+  </script>
+</html>
